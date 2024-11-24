@@ -4,14 +4,7 @@ import path from 'path';
 
 interface User {
     email: string;
-    name: string;
-    cpf: string;
-    rg: string;
-    role: string;
-    phone: string;
-    birthdate: Date;
     password: string;
-    image: string;
 }
 class UserDao {
 
@@ -36,22 +29,10 @@ class UserDao {
     }
 
     async createUser(user: User) {
-        if (user.image != "") {
-            const imageDirectory = path.join(__dirname, '..', 'public', 'images', 'product');
-            const imagePath = path.join(imageDirectory, user.image);
-            fs.writeFileSync(imagePath, user.image);
-        }
         return db.user.create({
             data: {
                 email: user.email,
-                name: user.name,
-                cpf: user.cpf,
-                rg: user.rg,
-                role: user.role,
-                phone: user.phone,
-                birthDate: user.birthdate,
                 password: user.password,
-                image: user.image
             }
         });
     }
