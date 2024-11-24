@@ -10,4 +10,4 @@ declare global {
 
 import { App } from "./app";
 
-new App().server.listen(3000);
+new App().server.listen(3001);
