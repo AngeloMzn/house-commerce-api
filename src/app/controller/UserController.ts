@@ -8,6 +8,7 @@ class UserController {
   public async signup(req: Request, res: Response): Promise<Response> {
     try {
       const response = await signUpUserAction.signUp(req.body);
+      console.error(response);
       return res.json(response);
     } catch (error) {
       console.error(error);
