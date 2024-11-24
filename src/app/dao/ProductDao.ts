@@ -32,7 +32,7 @@ class ProductDao {
     }
 
     async updateProduct(id: number, product: Product) {
-        return db.address.update({
+        return db.product.update({
             where: {
                 id: id
             },
@@ -45,7 +45,7 @@ class ProductDao {
     }
 
     async deleteProduct(id: number) {
-        return db.address.delete({
+        return db.product.delete({
             where: {
                 id: id
             }

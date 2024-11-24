@@ -8,7 +8,6 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
     }
 
     const token = authHeader.split(" ")[1];
-
     req.token = token;
 
     next();

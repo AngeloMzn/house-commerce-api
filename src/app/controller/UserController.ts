@@ -10,6 +10,7 @@ class UserController {
       const response = await signUpUserAction.signUp(req.body);
       return res.json(response);
     } catch (error) {
+      console.error(error);
       return res.status(500).json({ message: 'Internal Server Error', error: error as any });
     }
   }
