@@ -18,7 +18,7 @@ class CrudProductAction{
     public async readProduct(id: number){
         const response = await productDao.getProductById(id);
         if (response) {
-            return {message: "Produto buscado com sucesso!"};
+            return {message: "Produto buscado com sucesso!", product: response};
         }
         return {message: "Erro: Não foi possível encontrar o Produto!"};
     }

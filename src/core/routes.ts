@@ -11,8 +11,8 @@ router.post("/login", verifyToken, userController.login);
 
 //product
 router.post("/product/create", verifyToken, productController.createProduct);
-router.get("/productes", verifyToken, productController.getProductes);
-// router.get("/product/:id", verifyToken, productController.getProductById);
+router.get("/products", verifyToken, productController.getProductes);
+ router.get("/product/:id", verifyToken, productController.getProductById);
 router.put("/product/:id", verifyToken, productController.updateProduct);
 router.delete("/product/:id", verifyToken, productController.deleteProduct);
 

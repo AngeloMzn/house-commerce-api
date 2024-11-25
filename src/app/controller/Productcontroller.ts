@@ -5,8 +5,12 @@ class ProductController {
   public async createProduct(req: Request, res: Response): Promise<Response> {
     try{
         const response = crudProductAction.createProduct(req.body);
-        return res.status(201).json(response);
+        if(await response){
+          return res.status(201).json({ message: 'Produto cadastrado com sucesso!' });
+        }
+        return res.status(400).json({ message: 'Falha ao cadastrar o produto.' });
     }catch (error){
+      console.error(error as any);
       return res.status(500).json({ message: 'Internal Server Error', error: error as any });
     }
   }
