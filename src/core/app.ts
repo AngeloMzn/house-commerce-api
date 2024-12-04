@@ -2,7 +2,8 @@ import express from 'express';
 import path from 'path';
 import { router } from './routes';
 import cors from 'cors';
-
+import swaggerUi from 'swagger-ui-express';
+const swaggerDocument = require('../../swagger.json');
 export class App {
   public server: express.Application;
 
@@ -15,8 +16,8 @@ export class App {
   private middleware() {
     this.server.use(express.json());
     this.server.use('/images', express.static(path.join(__dirname, '../public/images')));
-   
-     this.server.use(cors({
+    this.server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); 
+    this.server.use(cors({
       origin: '*', 
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       allowedHeaders: ['Content-Type', 'Authorization'], 
