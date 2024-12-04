@@ -15,9 +15,9 @@ class ProductController {
     }
   }
 
-  public async getProductes(req: Request, res: Response): Promise<Response> {
+  public async getProducts(req: Request, res: Response): Promise<Response> {
     try {
-        const response = await listProductAction.getProductes();
+        const response = await listProductAction.getProducts(req.body);
         return res.json(response);
     } catch (error) {
       return res.status(500).json({ message: 'Internal Server Error', error: error as any });
@@ -44,7 +44,7 @@ class ProductController {
 
   public async deleteProduct(req: Request, res: Response): Promise<Response> {
     try {
-        const response = await crudProductAction.deleteProduct(Number(req.params.id));
+        const response = await crudProductAction.deleteProduct(Number(req.params.id), req.body);
         return res.json(response);
     } catch (error) {
       return res.status(500).json({ message: 'Internal Server Error', error: error as any });

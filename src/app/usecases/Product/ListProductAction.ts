@@ -4,8 +4,8 @@ import { productDao } from "../../dao/ProductDao";
 
 class ListProductAction{
 
-    public async getProductes() {
-        const response = await productDao.getProductes();
+    public async getProducts(data: any){
+        const response = await productDao.getProductByUserId(data.userId);
         if(response){
             return response;
         }

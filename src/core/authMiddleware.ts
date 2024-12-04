@@ -6,7 +6,7 @@ const KEYCLOAK_URL = "https://tdsoft-auth.hsborges.dev/realms/trabalho-pratico/.
 
 export const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers["authorization"];
-
+    console.log(req.headers['userId']);
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
         return res.status(401).json({ message: "Token não fornecido ou inválido." });
     }
@@ -47,3 +47,4 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
         return res.status(401).json({ message: `Erro ao validar o token: ${error.message}` });
     }
 };
+

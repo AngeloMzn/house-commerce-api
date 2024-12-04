@@ -13,6 +13,7 @@ model User {
   password  String 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  products  Product[]
 }
 
 model Product{
@@ -20,6 +21,8 @@ model Product{
   description      String
   price     Float
   type      String
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
